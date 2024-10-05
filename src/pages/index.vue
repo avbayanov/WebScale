@@ -1,5 +1,6 @@
 <template>
-  <HelloWorld />
+  <CurrentWeightIndicator />
+  <!-- <HelloWorld /> -->
 </template>
 
 <script lang="ts" setup>

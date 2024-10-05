@@ -36,5 +36,5 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  const drawer = ref(false)
+  const drawer : Ref<boolean> = ref(false)
 </script>
