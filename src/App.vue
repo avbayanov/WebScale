@@ -1,47 +1,47 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <v-responsive class="border rounded" max-height="300">
+    <v-app>
+      <v-app-bar
+        color="primary"
+        prominent
+      >
+        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+        <v-toolbar-title>My files</v-toolbar-title>
 
-  <main>
-    <TheWelcome />
-  </main>
+        <v-spacer></v-spacer>
+
+        <template v-if="$vuetify.display.mdAndUp">
+          <v-btn icon="mdi-magnify" variant="text"></v-btn>
+
+          <v-btn icon="mdi-filter" variant="text"></v-btn>
+        </template>
+
+        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
+      </v-app-bar>
+
+      <v-navigation-drawer
+        v-model="drawer"
+        :location="$vuetify.display.mobile ? 'bottom' : undefined"
+        temporary
+      >
+        <v-list>
+          <v-list-item link title="List Item 1"></v-list-item>
+          <v-list-item link title="List Item 2"></v-list-item>
+          <v-list-item link title="List Item 3"></v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-main>
+        <v-container>
+          <h1>Main Content</h1>
+        </v-container>
+      </v-main>
+    </v-app>
+  </v-responsive>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+<script lang="ts" setup>
+  import { ref } from 'vue'
+  const drawer = ref(true)
+</script>
